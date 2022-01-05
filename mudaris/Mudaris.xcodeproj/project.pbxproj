@@ -19,7 +19,10 @@
 		B8126C3D2758D9C6009C9338 /* DIN NEXT™ ARABIC MEDIUM .otf in Resources */ = {isa = PBXBuildFile; fileRef = B8126C342758D92A009C9338 /* DIN NEXT™ ARABIC MEDIUM .otf */; };
 		B83D3492276614D2007D3D6E /* InvoiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83D3491276614D2007D3D6E /* InvoiceController.swift */; };
 		B856CB02277B4EB40004CC55 /* TimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B856CB01277B4EB40004CC55 /* TimeCell.swift */; };
-		B8C3121027536DB70036BC1E /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C3120F27536DB70036BC1E /* DetailsViewController.swift */; };
+		B856CB27277D90840004CC55 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B856CB26277D90840004CC55 /* OrdersViewController.swift */; };
+		B856CB29277D91100004CC55 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = B856CB28277D91100004CC55 /* Order.swift */; };
+		B8C3121027536DB70036BC1E /* DetailTeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C3120F27536DB70036BC1E /* DetailTeacherViewController.swift */; };
+		B8C4F9F7277DDABC004DEA17 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C4F9F6277DDABC004DEA17 /* OrderTableViewCell.swift */; };
 		B8DB64FD274AF2F600D86D95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DB64FC274AF2F600D86D95 /* AppDelegate.swift */; };
 		B8DB64FF274AF2F600D86D95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DB64FE274AF2F600D86D95 /* SceneDelegate.swift */; };
 		B8DB6501274AF2F600D86D95 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DB6500274AF2F600D86D95 /* ViewController.swift */; };
@@ -29,6 +32,9 @@
 		B8DB6512274B027B00D86D95 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DB6511274B027B00D86D95 /* MainViewController.swift */; };
 		B8DB6515274B028400D86D95 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DB6514274B028400D86D95 /* LoginViewController.swift */; };
 		B8DB6518274B02AC00D86D95 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DB6517274B02AC00D86D95 /* SignUpViewController.swift */; };
+		B8E09172278180A90074D5BC /* DetailOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E09171278180A90074D5BC /* DetailOrderViewController.swift */; };
+		B8E0917727842D6A0074D5BC /* NetworkEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E0917627842D6A0074D5BC /* NetworkEndPoints.swift */; };
+		B8E0917A27842F030074D5BC /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E0917927842F030074D5BC /* K.swift */; };
 		B8F551D6277482DB0083CF60 /* payMethodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F551D5277482DB0083CF60 /* payMethodsCell.swift */; };
 		B8F551D8277488C50083CF60 /* InvoiceController+MFSDKServicesCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F551D7277488C50083CF60 /* InvoiceController+MFSDKServicesCall.swift */; };
 /* End PBXBuildFile section */
@@ -48,7 +54,10 @@
 		B8126C372758D92A009C9338 /* DIN NEXT™ ARABIC REGULAR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN NEXT™ ARABIC REGULAR.otf"; sourceTree = "<group>"; };
 		B83D3491276614D2007D3D6E /* InvoiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceController.swift; sourceTree = "<group>"; };
 		B856CB01277B4EB40004CC55 /* TimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCell.swift; sourceTree = "<group>"; };
-		B8C3120F27536DB70036BC1E /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		B856CB26277D90840004CC55 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
+		B856CB28277D91100004CC55 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		B8C3120F27536DB70036BC1E /* DetailTeacherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTeacherViewController.swift; sourceTree = "<group>"; };
+		B8C4F9F6277DDABC004DEA17 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		B8DB64F9274AF2F600D86D95 /* Mudaris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mudaris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8DB64FC274AF2F600D86D95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8DB64FE274AF2F600D86D95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +69,10 @@
 		B8DB6511274B027B00D86D95 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B8DB6514274B028400D86D95 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8DB6517274B02AC00D86D95 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		B8F551D5277482DB0083CF60 /* payMethodsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = payMethodsCell.swift; path = Mudaris/payMethodsCell.swift; sourceTree = SOURCE_ROOT; };
+		B8E09171278180A90074D5BC /* DetailOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailOrderViewController.swift; sourceTree = "<group>"; };
+		B8E0917627842D6A0074D5BC /* NetworkEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEndPoints.swift; sourceTree = "<group>"; };
+		B8E0917927842F030074D5BC /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		B8F551D5277482DB0083CF60 /* payMethodsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = payMethodsCell.swift; path = Mudaris/Custom_views/payMethodsCell.swift; sourceTree = SOURCE_ROOT; };
 		B8F551D7277488C50083CF60 /* InvoiceController+MFSDKServicesCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "InvoiceController+MFSDKServicesCall.swift"; sourceTree = "<group>"; };
 		C2D04905DD485E37ABD05507 /* Pods-Mudaris.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mudaris.debug.xcconfig"; path = "Target Support Files/Pods-Mudaris/Pods-Mudaris.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,9 +114,11 @@
 				B8DB6514274B028400D86D95 /* LoginViewController.swift */,
 				B8DB6517274B02AC00D86D95 /* SignUpViewController.swift */,
 				B8126C2F2758B05F009C9338 /* TeacherViewController.swift */,
-				B8C3120F27536DB70036BC1E /* DetailsViewController.swift */,
+				B8C3120F27536DB70036BC1E /* DetailTeacherViewController.swift */,
+				B8E09171278180A90074D5BC /* DetailOrderViewController.swift */,
 				B83D3491276614D2007D3D6E /* InvoiceController.swift */,
 				B8F551D7277488C50083CF60 /* InvoiceController+MFSDKServicesCall.swift */,
+				B856CB26277D90840004CC55 /* OrdersViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -139,8 +153,8 @@
 		B80A52AC274B73A300FEA10A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B80A52AD274B73BB00FEA10A /* TeacherTableViewCell.swift */,
 				B80A52B5274BD0BD00FEA10A /* Teachers.swift */,
+				B856CB28277D91100004CC55 /* Order.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -179,9 +193,9 @@
 		B8DB64FB274AF2F600D86D95 /* Mudaris */ = {
 			isa = PBXGroup;
 			children = (
-				B856CB01277B4EB40004CC55 /* TimeCell.swift */,
-				B8F551D5277482DB0083CF60 /* payMethodsCell.swift */,
-				B8126C312758D8F0009C9338 /* Fonts */,
+				B8E0917527842D380074D5BC /* Network */,
+				B8E0917427842BC80074D5BC /* Common */,
+				B8E0917327842B5C0074D5BC /* Custom_views */,
 				B80A52A4274B6C6200FEA10A /* Delegates */,
 				B80A52AC274B73A300FEA10A /* Models */,
 				B80A52A3274B6C5500FEA10A /* Controllers */,
@@ -189,6 +203,42 @@
 				B80A52A6274B6C8300FEA10A /* Support Files */,
 			);
 			path = Mudaris;
+			sourceTree = "<group>";
+		};
+		B8E0917327842B5C0074D5BC /* Custom_views */ = {
+			isa = PBXGroup;
+			children = (
+				B8C4F9F6277DDABC004DEA17 /* OrderTableViewCell.swift */,
+				B80A52AD274B73BB00FEA10A /* TeacherTableViewCell.swift */,
+				B8F551D5277482DB0083CF60 /* payMethodsCell.swift */,
+				B856CB01277B4EB40004CC55 /* TimeCell.swift */,
+			);
+			path = Custom_views;
+			sourceTree = "<group>";
+		};
+		B8E0917427842BC80074D5BC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B8E0917827842EF20074D5BC /* Constants */,
+				B8126C312758D8F0009C9338 /* Fonts */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		B8E0917527842D380074D5BC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B8E0917627842D6A0074D5BC /* NetworkEndPoints.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		B8E0917827842EF20074D5BC /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				B8E0917927842F030074D5BC /* K.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,7 +363,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8DB6518274B02AC00D86D95 /* SignUpViewController.swift in Sources */,
+				B8E0917A27842F030074D5BC /* K.swift in Sources */,
 				B8F551D6277482DB0083CF60 /* payMethodsCell.swift in Sources */,
+				B8E09172278180A90074D5BC /* DetailOrderViewController.swift in Sources */,
+				B856CB29277D91100004CC55 /* Order.swift in Sources */,
+				B8C4F9F7277DDABC004DEA17 /* OrderTableViewCell.swift in Sources */,
 				B8DB6501274AF2F600D86D95 /* ViewController.swift in Sources */,
 				B8126C302758B05F009C9338 /* TeacherViewController.swift in Sources */,
 				B8DB64FD274AF2F600D86D95 /* AppDelegate.swift in Sources */,
@@ -322,10 +376,12 @@
 				B80A52B6274BD0BD00FEA10A /* Teachers.swift in Sources */,
 				B856CB02277B4EB40004CC55 /* TimeCell.swift in Sources */,
 				B8DB6515274B028400D86D95 /* LoginViewController.swift in Sources */,
+				B856CB27277D90840004CC55 /* OrdersViewController.swift in Sources */,
 				B8DB6512274B027B00D86D95 /* MainViewController.swift in Sources */,
 				B80A52AE274B73BB00FEA10A /* TeacherTableViewCell.swift in Sources */,
+				B8E0917727842D6A0074D5BC /* NetworkEndPoints.swift in Sources */,
 				B8F551D8277488C50083CF60 /* InvoiceController+MFSDKServicesCall.swift in Sources */,
-				B8C3121027536DB70036BC1E /* DetailsViewController.swift in Sources */,
+				B8C3121027536DB70036BC1E /* DetailTeacherViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

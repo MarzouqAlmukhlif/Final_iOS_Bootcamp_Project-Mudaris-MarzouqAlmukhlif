@@ -11,20 +11,19 @@ import MFSDK
 
 class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,UICollectionViewDelegate,UICollectionViewDataSource {
 
+  // MARK: - Properties
   var paymentMethods: [MFPaymentMethod]?
   var selectedPaymentMethodIndex: Int?
   
-  //MARK: Outlet
+  
+  //MARK: IBOutlets
   @IBOutlet weak var collectionView: UICollectionView!
   
   @IBOutlet var timeCollectionView: UICollectionView!
   
-  @IBOutlet var viewIn: UIView!
-  @IBOutlet var viewBlack: UIView!
+  @IBOutlet var foregroundView: UIView!
+  @IBOutlet var backgroundView: UIView!
   @IBOutlet var calender: FSCalendar!
-  @IBOutlet var buttonTimeOne: UIButton!
-  @IBOutlet var buttonTimeTwo: UIButton!
-  @IBOutlet var buttonTimeThree: UIButton!
   @IBOutlet var teacherSelected: UILabel!
   @IBOutlet var ordarLabel: UILabel!
   @IBOutlet var dayLabel: UILabel!
@@ -35,27 +34,24 @@ class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSourc
   @IBOutlet var payButton: UIButton!
   
   
-  var array:Teachers?
-  var arrayDate:[DateTime]?
-  var selectedDate:String?
-  var selectedTime:String?
-  let invoiceValue:Decimal = 5
-  var timeArray = [String]()
+  var teacher: Teacher?
+  var dateTimes: [DateTime]?
+  var selectedDate: String?
+  var selectedTime: String?
+  let invoiceValue: Decimal = 5
+  var times = [String]()
 
 
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.viewBlack.layer.opacity = 0
-    viewIn.clipsToBounds = true
-    viewIn.layer.cornerRadius = 50
     
-    viewIn.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-    // Top right corner, Top left corner respectively
+    configureViews()
+    
     calender.delegate = self
     calender.dataSource = self
-    setupCalendar()
     
+    setupCalendar()
     
 //    setCardInfo()
     initiatePayment()
@@ -68,7 +64,7 @@ class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSourc
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseIn) {
-      self.viewBlack.layer.opacity = 1
+      self.backgroundView.layer.opacity = 1
     }
     self.InvoiceTwoStackView.layer.opacity = 0
   }
@@ -78,7 +74,7 @@ class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSourc
   @IBAction func dissmisView(_ sender: Any) {
     
     UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseIn) {
-      self.viewBlack.layer.opacity = 0
+      self.backgroundView.layer.opacity = 0
       
     }
     
@@ -89,38 +85,23 @@ class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSourc
     
   }
   
-  func setupCalendar() {
-    calender.appearance.selectionColor = UIColor(red: 78/255, green: 119/255, blue: 160/255, alpha: 1.0)
-    //    calender.appearance.todayColor = .clear
-    calender.appearance.titleTodayColor = UIColor(red: 206/255, green: 206/255, blue: 206/255, alpha: 1.0)
-    
-    
-    
-    calender.appearance.headerTitleColor = UIColor(red: 122/255, green: 167/255, blue: 220/255, alpha: 1.0)
-    
-    calender.appearance.weekdayTextColor = UIColor(red: 122/255, green: 167/255, blue: 220/255, alpha: 1.0)
-    
-    
-    calender.appearance.titleFont = UIFont.boldSystemFont(ofSize: calender.appearance.titleFont.pointSize)
-    calender.appearance.weekdayFont = UIFont(name: "DIN Next LT W23 Medium", size: calender.appearance.weekdayFont.pointSize + 2)
-    
-    calender.appearance.subtitleFont = UIFont(name: "DIN Next LT W23 Medium", size: calender.appearance.subtitleFont.pointSize + 2)
-    
-    calender.appearance.headerTitleFont = UIFont(name: "DIN Next LT W23 Bold", size: calender.appearance.headerTitleFont.pointSize + 2)
-    
-  }
+  
+ 
   
   
   func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
-    let array = arrayDate
+    let array = dateTimes
     var dateArray = [String]()
     let dateCalendar = getDate(date)
-    
+    times.removeAll()
+
     array?.forEach({ DateTime in
       dateArray.append(DateTime.date)
-      if dateArray.contains(dateCalendar){
+      
+      if DateTime.date == dateCalendar {
         DateTime.time.forEach { time in
-          timeArray.append(time)
+          times.append(time)
+          print("~~ \(time)")
         }
       }
       
@@ -129,6 +110,7 @@ class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSourc
 //    buttonTimeOne.setTitle(timeArray[0], for: .normal)
 //    buttonTimeTwo.setTitle(timeArray[1], for: .normal)
 //    buttonTimeThree.setTitle(timeArray[2], for: .normal)
+    selectedTime = nil
     selectedDate = dateCalendar;
     return true
   }
@@ -137,7 +119,7 @@ class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSourc
     
     let dateCalendar = getDate(date)
     
-    let array = arrayDate
+    let array = dateTimes
     var dateArray = [String]()
     
     array?.forEach({ DateTime in
@@ -235,8 +217,8 @@ class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSourc
       
       print("~~ \(selectedDate!) - \(selectedTime!)")
       
-      teacherSelected.text = array?.cores
-      ordarLabel.text = array?.cores
+      teacherSelected.text = teacher?.cores
+      ordarLabel.text = teacher?.cores
       dayLabel.text = "The"
       dateLabel.text = selectedDate
       timeLabel.text = selectedTime
@@ -293,7 +275,7 @@ class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSourc
       }
       return paymentMethods.count
     } else {
-      return timeArray.count
+      return times.count
     }
   }
   
@@ -318,13 +300,50 @@ class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSourc
       return cell
     } else {
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "timeCell", for: indexPath) as! TimeCell
-      cell.timeButton.setTitle(timeArray[indexPath.row], for: .normal)
+      cell.timeButton.setTitle(times[indexPath.row], for: .normal)
       cell.timeButton.tag = indexPath.row
       cell.timeButton.superview!.layer.borderColor = colorUnSelected.cgColor
       cell.timeButton.superview!.layer.borderWidth = 1
       return cell
     }
   }
+  
+  
+  
+  
+ // MARK: - Configure UI
+  
+  func configureViews() {
+    backgroundView.layer.opacity = 0
+    foregroundView.clipsToBounds = true
+    foregroundView.layer.cornerRadius = 50
+    
+    foregroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+  }
+  
+  
+  func setupCalendar() {
+    calender.appearance.selectionColor = UIColor(red: 78/255, green: 119/255, blue: 160/255, alpha: 1.0)
+    //    calender.appearance.todayColor = .clear
+    calender.appearance.titleTodayColor = UIColor(red: 206/255, green: 206/255, blue: 206/255, alpha: 1.0)
+    
+    
+    
+    calender.appearance.headerTitleColor = UIColor(red: 122/255, green: 167/255, blue: 220/255, alpha: 1.0)
+    
+    calender.appearance.weekdayTextColor = UIColor(red: 122/255, green: 167/255, blue: 220/255, alpha: 1.0)
+    
+    
+    calender.appearance.titleFont = UIFont.boldSystemFont(ofSize: calender.appearance.titleFont.pointSize)
+    calender.appearance.weekdayFont = UIFont(name: "DIN Next LT W23 Medium", size: calender.appearance.weekdayFont.pointSize + 2)
+    
+    calender.appearance.subtitleFont = UIFont(name: "DIN Next LT W23 Medium", size: calender.appearance.subtitleFont.pointSize + 2)
+    
+    calender.appearance.headerTitleFont = UIFont(name: "DIN Next LT W23 Bold", size: calender.appearance.headerTitleFont.pointSize + 2)
+    
+  }
+  
+
 
 }
 
