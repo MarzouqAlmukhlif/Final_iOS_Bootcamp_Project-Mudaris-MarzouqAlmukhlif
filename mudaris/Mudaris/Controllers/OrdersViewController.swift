@@ -121,13 +121,16 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
       
       do {
         //create json object from data
-        if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] {
+        if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
           print(json)
           self.orders.removeAll()
-          for order in json {
+          if json["state"] as! Int == 200 {
+            
+            let orders = json["orders"] as? [[String: Any]]
+            for order in orders! {
             let user = order
 
-            let gg = user["location"] as! String
+            let gg = user["studentLocation"] as! String
             let fullNameArr = gg.components(separatedBy:"|")
             let longE = Double(fullNameArr[0])
             let lag = Double(fullNameArr[1])
@@ -151,7 +154,13 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
 
             
             }
+          }
             // handle json...
+          } else {
+            DispatchQueue.main.async {
+              self.filterData = self.orders
+            self.tableView.reloadData()
+            }
           }
         }
       } catch let error {

@@ -22,7 +22,7 @@ struct K {
   struct HTTP {
     static let postHttpMethod = "POST"
     static let getHttpMethod = "GET"
-    static let jsonContentType = "application/json"
+    static let jsonContentType = "application/json; charset=utf-8"
   }
   
   

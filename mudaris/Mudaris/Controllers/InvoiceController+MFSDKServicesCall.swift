@@ -7,6 +7,7 @@
 //
 
 import MFSDK
+import UIKit
 
 extension InvoiceController {
   func initiatePayment() {
@@ -35,11 +36,14 @@ extension InvoiceController {
               case .success(let executePaymentResponse):
                   if let invoiceStatus = executePaymentResponse.invoiceStatus {
                     print("showSuccess1 \(invoiceStatus)")
-                    self.dismiss(animated: true, completion: nil)
+                    self.configOrderState(imageName: "success", success:true)
                   }
               case .failure(let failError):
                 self.dismiss(animated: true, completion: nil)
                 print("showFailError1 \(failError.errorDescription)")
+                self.configOrderState(imageName: "failure", success:false)
+
+                
               }
           }
       } else {
@@ -49,10 +53,14 @@ extension InvoiceController {
                   if let invoiceStatus = executePaymentResponse.invoiceStatus {
                     self.dismiss(animated: true, completion: nil)
                     print("showSuccess2 \(invoiceStatus)")
+                    self.configOrderState(imageName: "success", success:true)
+
                   }
               case .failure(let failError):
                 self.dismiss(animated: true, completion: nil)
                 print("showFailError2 \(failError.errorDescription)")
+                self.configOrderState(imageName: "failure", success:false)
+
               }
           }
       }
@@ -65,17 +73,15 @@ extension InvoiceController {
           case .success(let executePaymentResponse):
               if let invoiceStatus = executePaymentResponse.invoiceStatus {
                 print("showSuccess3 \(invoiceStatus)")
-                self.performSegue(withIdentifier: "showMain", sender: nil)
+                self.configOrderState(imageName: "success", success:true)
 
-//                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(30)) {
-//                  self.dismiss(animated: true, completion: nil)
-//                }
 
               }
           case .failure(let failError):
             print("showFailError3 \(failError.errorDescription)")
-            self.dismiss(animated: true, completion: nil)
+            self.configOrderState(imageName: "failure", success:false)
 
+            
           }
       }
   }

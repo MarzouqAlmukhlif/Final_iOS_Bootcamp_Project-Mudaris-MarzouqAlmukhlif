@@ -9,6 +9,27 @@ import UIKit
 import FSCalendar
 import MFSDK
 
+struct OrderCustomer {
+  
+  let studentName:String
+  let studentID:String
+  let studentPhone:String
+  let studentLocation:String
+
+  
+  let teacherID:String
+  let teacherName:String
+  let image:String
+  
+  
+  let coresName:String
+  let lessonDate:String
+  let lessonTime:String
+
+  
+  let state:String
+}
+
 class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,UICollectionViewDelegate,UICollectionViewDataSource {
 
   // MARK: - Properties
@@ -24,13 +45,26 @@ class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSourc
   @IBOutlet var foregroundView: UIView!
   @IBOutlet var backgroundView: UIView!
   @IBOutlet var calender: FSCalendar!
+  
+  
   @IBOutlet var teacherSelected: UILabel!
   @IBOutlet var ordarLabel: UILabel!
   @IBOutlet var dayLabel: UILabel!
   @IBOutlet var dateLabel: UILabel!
   @IBOutlet var timeLabel: UILabel!
+  
   @IBOutlet var InvoiceOneStackView: UIStackView!
   @IBOutlet var InvoiceTwoStackView: UIStackView!
+  @IBOutlet var invoiceThreeStackView: UIStackView!
+  
+  
+  @IBOutlet var imageOrderState: UIImageView!
+  @IBOutlet var messageOrderState: UILabel!
+  @IBOutlet var buttonOrderState: UIButton!
+  
+  
+  
+  
   @IBOutlet var payButton: UIButton!
   
   
@@ -40,8 +74,22 @@ class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSourc
   var selectedTime: String?
   let invoiceValue: Decimal = 5
   var times = [String]()
+  var stateOrder = false
+  
+  var order:OrderCustomer!
 
-
+  
+//  coresName
+//  id
+//  image
+//  lessonDate
+//  lessonTime
+//  location
+//  state
+//  teacherID
+//  teacherName
+//  userID
+//
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -55,19 +103,15 @@ class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSourc
     
 //    setCardInfo()
     initiatePayment()
-    
-    // Do any additional setup after loading the view.
-  }
-  
-  
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
+        
     UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseIn) {
       self.backgroundView.layer.opacity = 1
     }
-    self.InvoiceTwoStackView.layer.opacity = 0
+    InvoiceTwoStackView.layer.opacity = 0
+    invoiceThreeStackView.layer.opacity = 0
+    
   }
+  
   
   
   
@@ -107,13 +151,11 @@ class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSourc
       
     })
     timeCollectionView.reloadData()
-//    buttonTimeOne.setTitle(timeArray[0], for: .normal)
-//    buttonTimeTwo.setTitle(timeArray[1], for: .normal)
-//    buttonTimeThree.setTitle(timeArray[2], for: .normal)
     selectedTime = nil
     selectedDate = dateCalendar;
     return true
   }
+  
   
   func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
     
@@ -141,16 +183,45 @@ class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSourc
       }
     })
     
-
-//    if dateArray.contains(dateCalendar) {
-//      cell.titleLabel.textColor = UIColor(red: 119/255, green: 119/255, blue: 119/255, alpha: 1.0)
-//    }else {
-//      cell.titleLabel.textColor = UIColor(red: 206/255, green: 206/255, blue: 206/255, alpha: 1.0)
-//      cell.isUserInteractionEnabled = false
-//    }
-//
-    
   }
+  
+  
+  @IBAction func closeOrderState(_ sender: UIButton) {
+    if stateOrder {
+      dismiss(animated: true, completion: nil)
+      
+    } else {
+    UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseIn) {
+      self.invoiceThreeStackView.layer.opacity = 0
+      self.InvoiceTwoStackView.layer.opacity = 1
+      self.imageOrderState.image = UIImage()
+      self.buttonOrderState.setTitle("", for: .normal)
+      self.buttonOrderState.backgroundColor = .clear
+    }
+    }
+  }
+  
+  
+  func configOrderState(imageName:String,success:Bool) {
+    stateOrder = success
+    invoiceThreeStackView.layer.opacity = 1
+    imageOrderState.image = UIImage(named: imageName)
+    buttonOrderState.setTitle("اغلاق", for: .normal)
+    let successColor = UIColor(red: 78/255, green: 119/255, blue: 160/255, alpha: 1.0)
+    let filuerColor = UIColor(red: 160/255, green: 78/255, blue: 78/255, alpha: 1.0)
+    if success {
+      
+      messageOrderState.text = "تم بنجاح طلب المعلم وسيصلك في الموعد\nيمكنك الوصول للطلب من قائمة الطلبات"
+      messageOrderState.textColor = successColor
+      buttonOrderState.backgroundColor = successColor
+    } else {
+    messageOrderState.text = "لم يتم ارسال الطلب بنجاح\nالرجاء اعادة المحاولة"
+      messageOrderState.textColor = filuerColor
+      buttonOrderState.backgroundColor = filuerColor
+
+    }
+  }
+  
   
   func getDate(_ date:Date) -> String {
     let date : Date = date
@@ -181,10 +252,12 @@ class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSourc
   
   
   @IBAction func payDidPRessed(_ sender: Any) {
+//    postOrder()
+    
       if let paymentMethods = paymentMethods, !paymentMethods.isEmpty {
-        
+
           if let selectedIndex = selectedPaymentMethodIndex {
-              
+
               if paymentMethods[selectedIndex].paymentMethodCode == MFPaymentMethodCode.applePay.rawValue {
                   executeApplePayPayment(paymentMethodId: paymentMethods[selectedIndex].paymentMethodId)
               } else {
@@ -192,6 +265,120 @@ class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSourc
               }
           }
       }
+  }
+  
+  
+  
+
+  func postOrder() {
+
+
+    let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+    let path = "\(documentDirectory)/profile.plist"
+    let nsDictionary = NSDictionary(contentsOfFile: path) ?? NSDictionary()
+
+    let id = nsDictionary["id"] as! String
+    let name = "\(nsDictionary["firstName"] as! String) \(nsDictionary["lastName"] as! String)"
+    let phone = nsDictionary["phone"] as! String
+//    let location = nsDictionary["location"] as! String
+
+    
+
+
+   order =  OrderCustomer(studentName: name,
+                          studentID: id,
+                          studentPhone: phone,
+                          studentLocation: location,
+                          teacherID: teacher!.id,
+                          teacherName: teacher!.name,
+                          image: "teacher?.name",
+                          coresName: teacher!.cores,
+                          lessonDate: selectedDate!,
+                          lessonTime: selectedTime!,
+                          state: "تم ارسال الطلب")
+//
+//    postOrder()
+    
+    //create the url with URL
+    let url = URL(string: NetworkEndPoints.endPoints + "addOrder.php")! //change the url
+
+
+    
+
+    let parameters = ["email": nsDictionary["email"] as! String,
+                                            "studentName":order.studentName,
+                                            "studentID":order.studentID,
+                                            "studentPhone":order.studentPhone,
+                                            "studentLocation":order.studentLocation,
+                                            "teacherID":order.teacherID,
+                                            "teacherName":order.teacherName,
+                                            "image":order.image,
+                                            "coresName":order.coresName,
+                                            "lessonDate":order.lessonDate,
+                                            "lessonTime":order.lessonTime,
+                                            "state":order.state]
+    
+    
+    //create the session object
+    let session = URLSession.shared
+
+    //now create the URLRequest object using the url object
+    var request = URLRequest(url: url)
+    request.httpMethod = K.HTTP.postHttpMethod //set http method as POST
+
+    do {
+      request.httpBody = try JSONSerialization
+        .data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+
+      
+    } catch let error {
+      print(error.localizedDescription)
+    }
+
+    request.addValue(K.HTTP.jsonContentType,
+                     forHTTPHeaderField: "Content-Type")
+    request.addValue(K.HTTP.jsonContentType,
+                     forHTTPHeaderField: "Accept")
+
+    //create dataTask using the session object to send data to the server
+    let task = session.dataTask(with: request as URLRequest,
+                                completionHandler: { data, response, error in
+
+      guard error == nil else {
+        return
+      }
+
+      guard let data = data else {
+        return
+      }
+
+      do {
+        //create json object from data
+        if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] {
+          print(json)
+
+//            let user = json as! [String: Any]
+
+          
+//          print("~~ ")
+//            let gg = user["location"] as! String
+//            let fullNameArr = gg.components(separatedBy:"|")
+//            let longE = Double(fullNameArr[0])
+//            let lag = Double(fullNameArr[1])
+//            let location = [CGFloat(longE!), CGFloat(lag!)]
+
+            DispatchQueue.main.async {
+
+
+            }
+            // handle json...
+          
+        }
+      } catch let error {
+        print(error.localizedDescription)
+      }
+    })
+    task.resume()
   }
   
   
@@ -226,6 +413,7 @@ class InvoiceController: UIViewController,FSCalendarDelegate,FSCalendarDataSourc
       UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseIn) {
         self.InvoiceTwoStackView.layer.opacity = 1
         self.InvoiceOneStackView.layer.opacity = 0
+        
         
       }
       

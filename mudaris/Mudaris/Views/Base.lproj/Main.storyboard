@@ -158,7 +158,7 @@
                                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.47843137250000001" green="0.65490196079999996" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="DINNextLTW23-Regular" family="DIN Next LT W23" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="20"/>
@@ -170,7 +170,7 @@
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.47843137250000001" green="0.65490196079999996" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="DINNextLTW23-Regular" family="DIN Next LT W23" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="20"/>
@@ -1894,6 +1894,73 @@
                                             </view>
                                         </subviews>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8LQ-ee-yYd" userLabel="Invoice Three Stack View">
+                                        <rect key="frame" x="5" y="46" width="365" height="450.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RX3-85-waw">
+                                                <rect key="frame" x="0.0" y="0.0" width="365" height="280.5"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PyF-Te-89K">
+                                                        <rect key="frame" x="20" y="30" width="325" height="220.5"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="PyF-Te-89K" firstAttribute="top" secondItem="RX3-85-waw" secondAttribute="top" constant="30" id="0kB-LI-HLa"/>
+                                                    <constraint firstAttribute="trailing" secondItem="PyF-Te-89K" secondAttribute="trailing" constant="20" id="CWP-6e-lBa"/>
+                                                    <constraint firstAttribute="bottom" secondItem="PyF-Te-89K" secondAttribute="bottom" constant="30" id="Qvl-fe-bp1"/>
+                                                    <constraint firstItem="PyF-Te-89K" firstAttribute="leading" secondItem="RX3-85-waw" secondAttribute="leading" constant="20" id="aKn-HB-hw1"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lXn-wI-yht">
+                                                <rect key="frame" x="0.0" y="280.5" width="365" height="100"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HX3-5j-UQ2">
+                                                        <rect key="frame" x="30" y="5" width="305" height="75"/>
+                                                        <fontDescription key="fontDescription" name="DINNextLTW23-Regular" family="DIN Next LT W23" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="Alm-5e-FDe"/>
+                                                    <constraint firstAttribute="bottom" secondItem="HX3-5j-UQ2" secondAttribute="bottom" constant="20" id="CGl-n5-4Sl"/>
+                                                    <constraint firstItem="HX3-5j-UQ2" firstAttribute="leading" secondItem="lXn-wI-yht" secondAttribute="leading" constant="30" id="V6C-w8-5Ig"/>
+                                                    <constraint firstAttribute="trailing" secondItem="HX3-5j-UQ2" secondAttribute="trailing" constant="30" id="cKK-BV-p8j"/>
+                                                    <constraint firstItem="HX3-5j-UQ2" firstAttribute="top" secondItem="lXn-wI-yht" secondAttribute="top" constant="5" id="pLw-kt-dER"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6YB-lg-PGg">
+                                                <rect key="frame" x="0.0" y="380.5" width="365" height="70"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKB-D0-IgD">
+                                                        <rect key="frame" x="20" y="5" width="325" height="60"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="closeOrderState:" destination="B6s-kX-Jpw" eventType="touchUpInside" id="SRG-1v-MeJ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="EKB-D0-IgD" secondAttribute="trailing" constant="20" id="F6e-C0-BXe"/>
+                                                    <constraint firstItem="EKB-D0-IgD" firstAttribute="leading" secondItem="6YB-lg-PGg" secondAttribute="leading" constant="20" id="OYO-6K-WO3"/>
+                                                    <constraint firstAttribute="height" constant="70" id="Oc6-gv-bnI"/>
+                                                    <constraint firstAttribute="bottom" secondItem="EKB-D0-IgD" secondAttribute="bottom" constant="5" id="qgp-4u-x27"/>
+                                                    <constraint firstItem="EKB-D0-IgD" firstAttribute="top" secondItem="6YB-lg-PGg" secondAttribute="top" constant="5" id="rB7-IR-c4x"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1902,10 +1969,14 @@
                                     <constraint firstAttribute="trailing" secondItem="j7T-S6-pPh" secondAttribute="trailing" id="Fpo-71-ik5"/>
                                     <constraint firstItem="j7T-S6-pPh" firstAttribute="leading" secondItem="SMl-NL-PG3" secondAttribute="leading" id="HDg-yo-LBh"/>
                                     <constraint firstItem="Hwn-t1-qZ1" firstAttribute="top" secondItem="j7T-S6-pPh" secondAttribute="bottom" constant="3" id="J2g-t0-zDw"/>
+                                    <constraint firstItem="8LQ-ee-yYd" firstAttribute="top" secondItem="j7T-S6-pPh" secondAttribute="bottom" constant="5" id="L8i-Ji-fJH"/>
                                     <constraint firstItem="T0C-QC-o8A" firstAttribute="leading" secondItem="SMl-NL-PG3" secondAttribute="leading" constant="5" id="LZO-dO-N0O"/>
                                     <constraint firstItem="Hwn-t1-qZ1" firstAttribute="leading" secondItem="SMl-NL-PG3" secondAttribute="leading" constant="5" id="NA9-UV-xkz"/>
+                                    <constraint firstItem="8LQ-ee-yYd" firstAttribute="leading" secondItem="SMl-NL-PG3" secondAttribute="leading" constant="5" id="PCH-kv-VZg"/>
+                                    <constraint firstAttribute="bottom" secondItem="8LQ-ee-yYd" secondAttribute="bottom" constant="37" id="bbW-mP-3TA"/>
                                     <constraint firstItem="T0C-QC-o8A" firstAttribute="top" secondItem="j7T-S6-pPh" secondAttribute="bottom" constant="5" id="bpI-VH-El9"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="T0C-QC-o8A" secondAttribute="bottom" constant="37" id="isS-ns-x9L"/>
+                                    <constraint firstAttribute="trailing" secondItem="8LQ-ee-yYd" secondAttribute="trailing" constant="5" id="lZV-xE-2c8"/>
                                     <constraint firstItem="j7T-S6-pPh" firstAttribute="top" secondItem="SMl-NL-PG3" secondAttribute="top" constant="8" id="oHb-SI-Dfx"/>
                                     <constraint firstAttribute="trailing" secondItem="Hwn-t1-qZ1" secondAttribute="trailing" constant="4" id="zFg-Kp-On4"/>
                                 </constraints>
@@ -1929,11 +2000,15 @@
                         <outlet property="InvoiceOneStackView" destination="T0C-QC-o8A" id="l3p-dL-xsi"/>
                         <outlet property="InvoiceTwoStackView" destination="Hwn-t1-qZ1" id="HGx-Cn-GXu"/>
                         <outlet property="backgroundView" destination="u5z-ic-kxd" id="FMj-NQ-saj"/>
+                        <outlet property="buttonOrderState" destination="EKB-D0-IgD" id="PVA-Et-xfB"/>
                         <outlet property="calender" destination="vFr-Tp-DiM" id="Kcu-Zi-TLn"/>
                         <outlet property="collectionView" destination="Eyn-d0-sp1" id="Ig5-CC-Iw4"/>
                         <outlet property="dateLabel" destination="6Nq-gD-fmc" id="jm8-n6-igM"/>
                         <outlet property="dayLabel" destination="G2Y-0C-ewF" id="ywC-xq-izQ"/>
                         <outlet property="foregroundView" destination="SMl-NL-PG3" id="6RI-Su-XYt"/>
+                        <outlet property="imageOrderState" destination="PyF-Te-89K" id="Ovc-aW-yFU"/>
+                        <outlet property="invoiceThreeStackView" destination="8LQ-ee-yYd" id="zqG-Zc-ydb"/>
+                        <outlet property="messageOrderState" destination="HX3-5j-UQ2" id="yEV-im-4XM"/>
                         <outlet property="ordarLabel" destination="99l-2U-Hlu" id="jwI-0m-hgZ"/>
                         <outlet property="payButton" destination="6cn-a2-2V5" id="HxV-M8-xkJ"/>
                         <outlet property="teacherSelected" destination="igI-sc-o9S" id="YaO-v4-dy7"/>
@@ -1949,7 +2024,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1921.7391304347827" y="383.70535714285711"/>
+            <point key="canvasLocation" x="1920.8" y="383.65817091454278"/>
         </scene>
         <!--الرئيسية-->
         <scene sceneID="liv-bD-EZ1">
